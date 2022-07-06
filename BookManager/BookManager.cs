@@ -1,42 +1,38 @@
 using System;
 
+namespace Book;
 
-
-public class BookManager : Book
+class BookManager
 {
     List<Book> AvailableBooks = new List<Book>();
     List<Book> RentedBooks = new List<Book>();
 
-    public void AddBook(string name, string author)
+    public bool AddBook(Book book)
     {
-        book.name = Console.ReadLine();
-        book.author = Console.ReadLine();   
+        AvailableBooks.Add(book);
+        return true;
     }
 
-    public void RentBook(Book book.name)
+    public bool RentBook(Book book)
     {
-        if(BookList.Contains(book))
+        if(AvailableBooks.Exists(x => (x._name == book._name)))
         {
             RentedBooks.Add(book);
-            Console.WriteLine("The book is yours");
+            return true;
         }
         else
         {
-            if(RentedBooks.Contains(book))
-                Console.WriteLine("The book is taken");
-            else
-                Console.WriteLine("We don't have this book");
-            
+            Console.WriteLine("indisponibila");
+            return false;
         }
     }
 
-    public void ReturnBook(Book book)
+    public bool ReturnBook(Book book)
     {
-        if(RentedBooks.Contains(book))
-        {
-            RentedBooks.Remove(book);
-            BookList.Add(book);
-            Console.WriteLine("The book is returned");
-        }
+        RentedBooks.Remove(book);
+        AvailableBooks.Add(book);
+
+        return true;
     }
+
 }
