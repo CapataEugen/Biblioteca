@@ -5,12 +5,12 @@ public sealed class Library
 {
     private UserManager usermanager = new UserManager();
     private BookManager bookmanager = new BookManager();
-    public bool Login(string email, int password)
+    public bool Login(string email, string password)
     {
         return usermanager.Login(email, password);
     }
 
-    public bool Register(string email, int password)
+    public bool Register(string email, string password)
     {
         return usermanager.Register(email, password);
     }
