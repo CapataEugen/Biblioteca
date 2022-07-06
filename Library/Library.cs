@@ -1,10 +1,12 @@
 ﻿
 public class Library
 {
-    private UserManager userManager = new UserManager();
-    private BookManager bookManager = new BookManager();
+    private IUserManager userManager;
+    private IBookManager bookManager;
 
-    public Library() {
+    public Library(IUserManager userManager, IBookManager bookManager) {
+        this.userManager = userManager;
+        this.bookManager = bookManager;
         //load users and books from file...
         userManager.Register("cosmin", "123123");
     }

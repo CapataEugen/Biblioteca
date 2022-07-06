@@ -1,12 +1,21 @@
 
 public class Book
 {
-    public string _name;
-    public string _author;
+    private string name;
+    private string author;
     public Book(string name, string author)
     {
-        _name = name;
-        _author = author;
+        this.name = name;
+        this.author = author;
     }
 
+    public string Name
+    {
+        get { return name;}
+    }
+
+    public string Author
+    {
+        get { return author;}
+    }
 }

@@ -1,5 +1,5 @@
 
-public class BookManager
+public class BookManager : IBookManager
 {
     private List<Book> AvailableBooks = new List<Book>();
     private List<Book> RentedBooks = new List<Book>();
@@ -12,7 +12,7 @@ public class BookManager
 
     public bool RentBook(User user, string name)
     {
-        Book? book = AvailableBooks.Find(x => (x._name == name));
+        Book? book = AvailableBooks.Find(x => (x.Name == name));
         if(book is not null && user.getRentedBook() is null) {
             RentedBooks.Add(book);
             AvailableBooks.Remove(book);
@@ -41,7 +41,7 @@ public class BookManager
 
     public void ListAvailableBooks() {
         foreach(Book b in AvailableBooks) {
-            Console.WriteLine(b._name + " by " + b._author);
+            Console.WriteLine(b.Name + " by " + b.Author);
         }
     }
 }

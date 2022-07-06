@@ -1,7 +1,6 @@
 
 public class User
 {
-
     private string email;
     private string password;
     private Book? rentedBook;
@@ -28,5 +27,4 @@ public class User
     public Book? getRentedBook() {
         return rentedBook;
     }
-
 }

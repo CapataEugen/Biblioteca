@@ -3,7 +3,7 @@ class Menu
 {
     static public void Start()
     {
-        Library library = new Library();
+        Library library = new Library(new UserManager(), new BookManager());
 
         bool loggedIn = false;
         while (!loggedIn)
