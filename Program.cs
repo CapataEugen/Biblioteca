@@ -1,3 +1,4 @@
+
 using DefaultNamespace;
 namespace Book;
 class Program
@@ -8,4 +9,5 @@ class Program
         manager.Login(Console.ReadLine(), Console.ReadLine());
     }
 }
+
 
