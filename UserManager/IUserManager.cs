@@ -1,4 +1,3 @@
-namespace UserNamespace;
 
 public interface IUserManager
 {

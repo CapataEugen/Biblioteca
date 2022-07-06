@@ -1,5 +1,5 @@
-namespace Book;
-class Book
+
+public class Book
 {
     public string _name;
     public string _author;

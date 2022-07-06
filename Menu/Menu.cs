@@ -11,9 +11,9 @@ class Menu
             Console.Write("(L)ogin, (R)egister: ");
             string choice = Console.ReadLine()!.ToLower();
 
-            Console.WriteLine("Enter email:");
+            Console.WriteLine("Enter email: ");
             string? email = Console.ReadLine();
-            Console.WriteLine("Enter password:");
+            Console.WriteLine("Enter password: ");
             string? password = Console.ReadLine();
 
             switch (choice)
@@ -38,7 +38,7 @@ class Menu
         while (!exit)
         {
             Console.WriteLine("What would you like to do?");
-            Console.Write("(C)heckout the library, (r)ent book, r(e)turn book, (a)dd book, e(x)it:");
+            Console.Write("(C)heckout the library, (r)ent book, r(e)turn book, (a)dd book, e(x)it: ");
             string? choice = Console.ReadLine()!.ToLower();
 
             bool state = true;

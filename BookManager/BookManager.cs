@@ -1,38 +1,47 @@
-using System;
 
-namespace Book;
-
-class BookManager
+public class BookManager
 {
-    List<Book> AvailableBooks = new List<Book>();
-    List<Book> RentedBooks = new List<Book>();
+    private List<Book> AvailableBooks = new List<Book>();
+    private List<Book> RentedBooks = new List<Book>();
 
-    public bool AddBook(Book book)
+    public bool AddBook(string name, string author)
     {
-        AvailableBooks.Add(book);
+        AvailableBooks.Add(new Book(name, author));
         return true;
     }
 
-    public bool RentBook(Book book)
+    public bool RentBook(User user, string name)
     {
-        if(AvailableBooks.Exists(x => (x._name == book._name)))
-        {
+        Book? book = AvailableBooks.Find(x => (x._name == name));
+        if(book is not null && user.getRentedBook() is null) {
             RentedBooks.Add(book);
+            AvailableBooks.Remove(book);
+            user.setRentedBook(book);
             return true;
         }
-        else
-        {
+        else {
             Console.WriteLine("indisponibila");
             return false;
         }
     }
 
-    public bool ReturnBook(Book book)
+    public bool ReturnBook(User user)
     {
-        RentedBooks.Remove(book);
-        AvailableBooks.Add(book);
+        Book? book = user.getRentedBook();
+        if(book is not null) {
+            RentedBooks.Remove(book);
+            AvailableBooks.Add(book);
+            user.setRentedBook(null);
 
-        return true;
+            return true;
+        }
+        
+        return false;
     }
 
+    public void ListAvailableBooks() {
+        foreach(Book b in AvailableBooks) {
+            Console.WriteLine(b._name + " by " + b._author);
+        }
+    }
 }

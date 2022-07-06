@@ -1,38 +1,42 @@
-﻿using System;
-
-
-public sealed class Library
+﻿
+public class Library
 {
-    private UserManager usermanager = new UserManager();
-    private BookManager bookmanager = new BookManager();
+    private UserManager userManager = new UserManager();
+    private BookManager bookManager = new BookManager();
+
+    public Library() {
+        //load users and books from file...
+        userManager.Register("cosmin", "123123");
+    }
+
     public bool Login(string email, string password)
     {
-        return usermanager.Login(email, password);
+        return userManager.Login(email, password);
     }
 
     public bool Register(string email, string password)
     {
-        return usermanager.Register(email, password);
+        return userManager.Register(email, password);
     }
 
     public void ListBooks()
     {
-        bookmanager.ListBooks();
+        bookManager.ListAvailableBooks();
     }
 
     public bool AddBook(string bookname, string bookauthor)
     {
-        return bookmanager.AddBook(bookname, bookauthor);
+        return bookManager.AddBook(bookname, bookauthor);
 
     }
 
     public bool Rent(string bookname)
     {
-        return bookmanager.Rent(bookname);
+        return bookManager.RentBook(userManager.getCurrentUser(), bookname);
     }
 
     public bool Return()
     {
-        return bookmanager.Rent();
+        return bookManager.ReturnBook(userManager.getCurrentUser());
     }
 }
