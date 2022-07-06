@@ -20,9 +20,9 @@ public sealed class Library
         bookmanager.ListBooks();
     }
 
-    public void AddBook(string bookname, string bookauthor)
+    public bool AddBook(string bookname, string bookauthor)
     {
-        bookmanager.AddBook(bookname, bookauthor);
+        return bookmanager.AddBook(bookname, bookauthor);
 
     }
 
